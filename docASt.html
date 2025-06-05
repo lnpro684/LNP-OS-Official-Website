@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Troubleshooting - Apple Silicon | LNP OS</title>
+  <link rel="icon" type="image/png" href="css/img/lnposlogo.png">
+  <link rel="stylesheet" href="css/doc.css">
+  <style>
+    /* Optional inline CSS for <code> elements and callouts */
+    code {
+      background-color: #000922;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="navigation">
+    <div class="navbar">
+      <div class="navbar-left">
+        <img src="css/img/lnposlogo.png" alt="Logo">
+        <span class="brand-text">LNP OS</span>
+      </div>
+      <div class="navbar-right">
+        <a href="landing.html">Home</a>
+        <a href="download.html">Download</a>
+        <a href="docAS.html">Docs</a>
+        <a href="askus.html">Community</a>                      
+      </div>
+    </div>
+  </div>
+
+  <div class="main-layout">
+    <aside class="sidebar">
+      <h3>Install LNP OS</h3>
+      <ul>
+        <li><a href="docAS.html">Apple Silicon</a></li>
+        <li><a href="docAMD64.html">AMD64</a></li>
+        <li><a href="docARMPC.html">ARM64 PC</a></li>
+        <li><a href="docARMPH.html">ARM64 Phone</a></li>
+      </ul>
+      <h3>Troubleshooting Installation</h3>
+      <ul>
+        <li><a href="docASt.html">Apple Silicon</a></li>
+        <li><a href="docAMD64t.html">AMD64</a></li>
+        <li><a href="docARMPCt.html">ARM64 PC</a></li>
+        <li><a href="docARMPHt.html">ARM64 Phone</a></li>
+      </ul>
+    </aside>
+
+    <main class="AS">
+      <div class="title">
+        <strong>Troubleshooting Apple Silicon</strong>
+      </div>
+
+      <h4>Issue 1: USB Drive Not Detected</h4>
+      <p>
+        If your bootable USB doesn’t appear at startup, ensure it was created properly using <strong>Balena Etcher</strong>. Re-flash the ISO and verify that you’re using the <code>ARM64</code> image.
+      </p>
+      <p><strong>Tips:</strong></p>
+      <ul>
+        <li>Use USB 3.0 drives for better compatibility</li>
+        <li>Try plugging the USB directly into your Mac (avoid hubs)</li>
+        <li>Hold the <code>Power</code> button until “Options” shows, then open “Startup Security Utility” and set to <code>Allow booting from external media</code></li>
+      </ul>
+
+      <h4>Issue 2: Installer Freezes or Reboots</h4>
+      <p>
+        This can be caused by insufficient RAM or faulty storage media. Ensure the ISO isn't corrupted.
+      </p>
+      <code>
+        sha256sum LNP-OS-ARM64-PC.iso
+      </code>
+      <p>Compare the hash to the one on the <code>download.html</code> page. Use a reliable USB stick (SanDisk/Kingston recommended).</p>
+
+      <h4>Issue 3: Wi-Fi, Bluetooth, or Audio Not Working</h4>
+      <p>
+        LNP OS uses a hybrid auto-driver system. To manually trigger detection, open the terminal and run:
+      </p>
+      <code>
+        sudo lnp-device-manager --scan
+      </code>
+      <p>
+        Alternatively, go to <strong>Device Manager</strong> from the system menu. It will automatically search and install available drivers if a network connection is active.
+      </p>
+
+      <h4>Issue 4: "Install Alongside macOS" Fails</h4>
+      <p>
+        Make sure macOS is installed on a GPT/APFS volume. Encrypted volumes or FileVault may block partitioning.
+      </p>
+      <code>
+        diskutil apfs list
+      </code>
+      <p>
+        If errors appear, use the <strong>Manual Installation</strong> mode and partition with:
+      </p>
+      <code>
+        sudo cfdisk /dev/nvme0n1
+      </code>
+
+      <h4>Issue 5: Can't Boot LNP OS After Installation</h4>
+      <p>
+        If you’re dual-booting and don’t see LNP OS in startup options:
+      </p>
+      <ul>
+        <li>Shut down completely</li>
+        <li>Hold <code>Power</code> until “Options” menu appears</li>
+        <li>Select <code>LNP OS</code> from the list</li>
+        <li>Use <code>Startup Disk</code> in macOS to set default if needed</li>
+      </ul>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>LNP OS is Powered by Previx Software Studio</p>
+      <p>&copy; 2025 Previx Software Studio. All rights reserved.</p>
+      <nav>
+        <a href="askus.html">Community</a> |
+        <a href="download.html">Download</a> |
+        <a href="PSSlanding.html">Previx Software Studio</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

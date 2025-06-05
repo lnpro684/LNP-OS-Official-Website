@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Troubleshooting - AMD64 | LNP OS</title>
+  <link rel="icon" type="image/png" href="css/img/lnposlogo.png">
+  <link rel="stylesheet" href="css/doc.css">
+  <style>
+    /* Optional inline CSS for <code> elements and callouts */
+    code {
+      background-color: #000922;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="navigation">
+    <div class="navbar">
+      <div class="navbar-left">
+        <img src="css/img/lnposlogo.png" alt="Logo">
+        <span class="brand-text">LNP OS</span>
+      </div>
+      <div class="navbar-right">
+        <a href="landing.html">Home</a>
+        <a href="download.html">Download</a>
+        <a href="docAS.html">Docs</a>
+        <a href="askus.html">Community</a>                      
+      </div>
+    </div>
+  </div>
+
+  <div class="main-layout">
+    <aside class="sidebar">
+      <h3>Install LNP OS</h3>
+      <ul>
+        <li><a href="docAS.html">Apple Silicon</a></li>
+        <li><a href="docAMD64.html">AMD64</a></li>
+        <li><a href="docARMPC.html">ARM64 PC</a></li>
+        <li><a href="docARMPH.html">ARM64 Phone</a></li>
+      </ul>
+      <h3>Troubleshooting Installation</h3>
+      <ul>
+        <li><a href="docASt.html">Apple Silicon</a></li>
+        <li><a href="docAMD64t.html">AMD64</a></li>
+        <li><a href="docARMPCt.html">ARM64 PC</a></li>
+        <li><a href="docARMPHt.html">ARM64 Phone</a></li>
+      </ul>
+    </aside>
+
+    <main class="AS">
+        <div class="title"><strong>Troubleshooting LNP OS on AMD64</strong></div>
+      
+        <h2>Issue 1: Black Screen After Installation</h2>
+        <p>
+          Check if secure boot is disabled in UEFI settings. Also verify boot priority is set correctly.
+        </p>
+      
+        <h2>Issue 2: Dual Boot Not Appearing</h2>
+        <p>
+          Use UEFI boot menu (<code>F12</code>, <code>ESC</code>, or <code>DEL</code>) and check if <code>LNP OS Bootloader</code> exists.
+        </p>
+      
+        <h2>Issue 3: No Network or Audio</h2>
+        <p>
+          Go to Settings > Device Manager. Run:
+        </p>
+        <pre><code>sudo lnp-drivers --scan</code></pre>
+      
+        <h2>Issue 4: Disk Not Found</h2>
+        <p>
+          If installer can’t find storage:
+        </p>
+        <pre><code>sudo fdisk -l</code></pre>
+        <p>
+          If your disk uses RAID or NVMe, check BIOS for compatibility settings (disable Intel RST).
+        </p>
+      </main>
+      
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>LNP OS is Powered by Previx Software Studio</p>
+      <p>&copy; 2025 Previx Software Studio. All rights reserved.</p>
+      <nav>
+        <a href="askus.html">Community</a> |
+        <a href="download.html">Download</a> |
+        <a href="PSSlanding.html">Previx Software Studio</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
